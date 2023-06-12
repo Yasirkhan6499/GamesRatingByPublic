@@ -24,12 +24,12 @@ function App() {
   return (
     <div className='full-app'>
    <Routes>
-    <Route index path='/' element={<Home />}></Route>
-    <Route path='/gameform' element={<GameForm />}></Route>
-    <Route path="/auth" element={<Auth />}></Route>
-    <Route path="/gamePost" element={<GamePost />}></Route>
-    <Route path='/about' element={<About />}></Route>
-    <Route path="/privacy" element={<Privacy />}></Route>
+    <Route index path='https://gamesratingbypublic.web.app/' element={<Home />}></Route>
+    <Route path='https://gamesratingbypublic.web.app//gameform' element={<GameForm />}></Route>
+    <Route path="https://gamesratingbypublic.web.app//auth" element={<Auth />}></Route>
+    <Route path="https://gamesratingbypublic.web.app//gamePost" element={<GamePost />}></Route>
+    <Route path='https://gamesratingbypublic.web.app//about' element={<About />}></Route>
+    <Route path="https://gamesratingbypublic.web.app//privacy" element={<Privacy />}></Route>
    </Routes>
    </div>
   );
