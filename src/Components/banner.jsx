@@ -5,7 +5,7 @@ const BannerImage = () => {
     return (
        
         <Link className='link' to="/gamePost"> 
-         <h1 className='bannerImg'>Games Rating By Public1</h1>
+         <h1 className='bannerImg'>Games Rating By Public2</h1>
         </Link>
         
     );
