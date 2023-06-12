@@ -23,7 +23,7 @@ function App() {
   return (
     <div className='full-app'>
    <Routes>
-    <Route index path='/' element={<Home />}></Route>
+    <Route index path='https://gamesratingbypublic.web.app/' element={<Home />}></Route>
     <Route path="/auth" element={<Auth />}></Route>
     <Route path="/gamePost" element={<GamePost />}></Route>
     <Route path='/about' element={<About />}></Route>
