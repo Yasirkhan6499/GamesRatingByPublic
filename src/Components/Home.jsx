@@ -10,9 +10,9 @@ const Home = () => {
         {/* <section>
             <BannerImage />
         </section> */}
-        <h2>hiiiiiiiii</h2>
+        
         <section>
-            <GameForm />
+            <GamePost />
         </section>
         {/* <section>
             <Auth />
