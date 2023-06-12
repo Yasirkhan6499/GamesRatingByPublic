@@ -6,6 +6,7 @@ import GamePost from './Components/gamePost';
 import Auth from './Components/auth';
 import About from './Components/about';
 import Privacy from './Components/privacy';
+import GameForm from './Components/gameForm';
 
 
 
@@ -23,7 +24,8 @@ function App() {
   return (
     <div className='full-app'>
    <Routes>
-    <Route index path='https://gamesratingbypublic.web.app/' element={<Home />}></Route>
+    <Route index path='/' element={<Home />}></Route>
+    <Route path='/gameform' element={<GameForm />}></Route>
     <Route path="/auth" element={<Auth />}></Route>
     <Route path="/gamePost" element={<GamePost />}></Route>
     <Route path='/about' element={<About />}></Route>
