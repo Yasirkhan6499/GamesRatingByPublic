@@ -7,6 +7,7 @@ import LoggingConversion from './logingConversion';
 import { useNavigate } from 'react-router-dom';
 import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
 import Error from "./error"
+import { getErrorMsg } from '../config/errorHandling';
 
 const Auth = () => {
     const [email,setEmail] = useState("");
@@ -61,12 +62,8 @@ const Auth = () => {
             setError(errorMsg);
         }
     }
-    // Getting error message
-    const getErrorMsg = (e)=>{
-        const fullErrorMessage = e.message;
-        const removeSlashFromMsg = fullErrorMessage.split("/")[1].trim();
-        return "Error: " + removeSlashFromMsg.split(")")[0].trim();
-    }
+  
+  
     //   handle Login button
     const handleLoginBtn = (account)=>{
         setHasAccount(account);
@@ -80,6 +77,11 @@ const Auth = () => {
         });
 
         
+    }
+
+    // const handling logging Host
+    const handleLoggingHost = ()=>{
+        navigate("/HostAuth");
     }
 
     return (  
@@ -118,7 +120,13 @@ const Auth = () => {
         color="white"
         onClick={handleGoogleButton}
         />
+       
         </form>
+        <p className='btn btn--link'
+        onClick={handleLoggingHost}
+        >
+            Login As Host</p>
+        
        </div>
     
     );

@@ -7,6 +7,7 @@ import Auth from './Components/auth';
 import About from './Components/about';
 import Privacy from './Components/privacy';
 import GameForm from './Components/gameForm';
+import HostAuth from './Components/hostAuth';
 
 
 
@@ -27,6 +28,7 @@ function App() {
     <Route index path='/' element={<Home />}></Route>
     <Route path='/gameform' element={<GameForm />}></Route>
     <Route path="/auth" element={<Auth />}></Route>
+    <Route path='/HostAuth' element={<HostAuth />}></Route>
     <Route path="/gamePost" element={<GamePost />}></Route>
     <Route path='/about' element={<About />}></Route>
     <Route path="/privacy" element={<Privacy />}></Route>
