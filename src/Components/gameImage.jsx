@@ -3,7 +3,7 @@ import React, { Component, useEffect } from 'react';
 import { useState } from 'react';
 import { storage } from '../config/firebase';
 
-const GamesImage = ({name}) => {
+const GamesImage = ({name, gameInfo}) => {
     const [showImage, setShowImage] = useState(null);
    
     const imageRef = ref(storage, `images/${name}`);
@@ -16,7 +16,11 @@ const GamesImage = ({name}) => {
 
     return ( 
         <React.Fragment>
-        {(showImage)?<img className='gameImage' src={showImage} /> :""}
+            
+            <div className='img-container'>
+            <p className="gameInfo">{gameInfo}</p>
+            {(showImage)?<img className='gameImage' src={showImage} /> :""}
+            </div>
         </React.Fragment>
      );
 }

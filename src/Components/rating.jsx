@@ -3,7 +3,7 @@ import StarRating from 'star-rating.js';
 
 
 
-function RatingSystem({ratings}) {
+function RatingSystem({ratings, totalRatings}) {
 
   const calculateRating = ()=>{
     const ratings = [1, 2, 3, 4, 5];
@@ -34,6 +34,9 @@ console.log(`${rating}/10`);
 
   return (
     <div className={getClasses()}>
+      <p className='totalRatings'>{totalRatings} 
+      {(totalRatings>1 || totalRatings===0)
+      ?" people":" person"} rated it!</p>
       <h2>Rating  {ratings}/10</h2>
       {/* <p>Likes: {likes}</p>
       <p>Dislikes: {dislikes}</p>

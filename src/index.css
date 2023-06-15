@@ -203,11 +203,22 @@ label{
 }
 
 /* Game image */
+.img-container{
+  position: relative;
+}
 .gameImage{
   width: 100%;
   min-width: 150px;
   height: 150px;
   object-fit: cover;
+
+  transition: opacity 0.5s ease-in-out;
+}
+.img-container:hover .gameInfo{
+  opacity: 1;
+}
+.img-container:hover .gameImage {
+  opacity: 0.2;
 }
 
 
@@ -216,6 +227,20 @@ label{
   .gameImage{
     height: 350px;
   }
+}
+
+    /* game info */
+.gameInfo{
+  position: absolute;
+  opacity: 0;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  padding: 0.8rem;
+  word-spacing: 5px;
+  text-align:justify;
+  
+
+  transition: all ease-in-out 0.5s;
 }
 
 
@@ -231,6 +256,8 @@ label{
   font-size: 0.8rem;
   margin-right: 3rem;
   padding-top: 0.5rem;
+
+  position: relative;
 }
 .gameRating-bgGold{
   background-color: gold;
@@ -246,6 +273,20 @@ label{
     height: 150px;
     
   }
+}
+/* Total Ratings */
+.totalRatings{
+  position: absolute;
+  top: -1rem;
+  color: white;
+  font-size: 1rem;
+  opacity: 0;
+
+  transition: all 0.3s ease-in-out;
+}
+.gameRating:hover .totalRatings{
+  opacity: 1;
+  top:-3rem;
 }
 
 /* stars */
@@ -376,3 +417,4 @@ label{
 .email-link{
   color: white;
 }
+

@@ -181,7 +181,7 @@ const GamePost = () => {
                 
                 <div className='gamePost'>
                 <div>
-                    <GamesImage key={game.id} name={game.id} />
+                    <GamesImage key={game.id} name={game.id} gameInfo={game.Description} />
                     <div className='gamePost-info'>
                     <p>{game.title}</p>
                     <p>{game.releaseDate}</p>
@@ -191,7 +191,7 @@ const GamePost = () => {
                     
                 </div>
                 </div>
-                <RatingSystem ratings = {game.Ratings} />
+                <RatingSystem ratings = {game.Ratings} totalRatings = {game.totalRatings}/>
                 </div>
                 )
             })}
