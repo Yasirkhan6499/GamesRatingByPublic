@@ -228,7 +228,7 @@ label{
    
   }
   .gamePost{
-    width: 80%;
+    width: 100%;
   }
 }
 
@@ -361,16 +361,16 @@ label{
 @media screen and (max-width: 860px) {
   .gameRating{
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 3rem;
+    right: -3rem;
     margin-right:initial;
   }
 }
 @media screen and (max-width: 699px) {
   .gameRating{
     position: absolute;
-    bottom: 4rem;
-    right: 0rem;
+    
+    right: -2rem;
     font-size: 0.83rem;
     width: 100px;
     height: 100px;
