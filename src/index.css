@@ -371,7 +371,7 @@ label{
     position: absolute;
     
     right: -2rem;
-    font-size: 0.77rem;
+    font-size: 0.72rem;
     width: 90px;
     height: 90px;
     transform: rotate(10deg);
@@ -395,11 +395,11 @@ label{
 /* @media for totalRatings */
 @media screen  and (max-width: 699px){
     .totalRatings{
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       width: 110px;
       top: auto;
       bottom: -1rem;
-      left: -0rem;
+      left: -0.9rem;
     }
     .gameRating:hover .totalRatings{
       opacity: 1;
