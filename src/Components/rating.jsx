@@ -36,7 +36,7 @@ console.log(`${rating}/10`);
     <div className={getClasses()}>
       <p className='totalRatings'>{totalRatings} 
       {(totalRatings>1 || totalRatings===0)
-      ?" people":" person"} rated it!</p>
+      ?" People":" Person"} Rated!</p>
       <h2>Rating  {ratings}/10</h2>
       {/* <p>Likes: {likes}</p>
       <p>Dislikes: {dislikes}</p>

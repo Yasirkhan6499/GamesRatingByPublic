@@ -107,7 +107,7 @@ code {
 @media screen and (max-width: 700px) {
   .user-container{
     
-    right: -1.5rem;
+    right: -0.9rem;
   
   }
 }
@@ -190,7 +190,7 @@ label{
   
 }
 .gamePost{
-  margin-top: 4rem;
+  
   width: 50%;
  
 }
@@ -199,20 +199,37 @@ label{
   justify-content: space-between;
   gap: 2rem;
   align-items: center;
-
+  background-color: black;
+  box-shadow: 0px 0px 14px  rgba(235, 235, 235, 0.492);
+  margin: 3rem;
   position: relative;
 }
 /* media for gamePostPlusRating */
+@media screen and (max-width: 1200px) {
+  .gamePost{
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 1090px) {
+  .gamePostPlusRating{
+    box-shadow: none;
+  }
+}
+
 @media screen and (max-width: 860px) {
   .gamePostPlusRating{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+   
   }
   .gamePost{
     width: 80%;
   }
 }
+
+
 
 .gamePost-info{
   background-color: black;
@@ -321,29 +338,40 @@ label{
   background-color: red;
 }
 /* Game Raing (PC) */
-@media screen and (min-width: 8600px) {
+
+@media screen and (min-width: 860px) {
   .gameRating{
     font-size: 1.23rem;
     width: 150px;
     height: 150px;
-    
+    margin-right: 5rem;
   }
+}
+@media screen and (max-width: 970px) {
+ .gameRating{
+  font-size: 1.1rem;
+  width: 130px;
+  height: 130px;
+  margin-right: -3rem;
+ }
 }
 @media screen and (max-width: 860px) {
   .gameRating{
     position: absolute;
     bottom: 0;
     right: 0;
+    margin-right:initial;
   }
 }
 @media screen and (max-width: 699px) {
   .gameRating{
     position: absolute;
     bottom: 4rem;
-    right: -2rem;
+    right: 0rem;
     font-size: 0.83rem;
     width: 100px;
     height: 100px;
+    transform: rotate(10deg);
   }
 }
 /* Total Ratings */
@@ -359,6 +387,22 @@ label{
 .gameRating:hover .totalRatings{
   opacity: 1;
   top:-3rem;
+}
+
+/* @media for totalRatings */
+@media screen  and (max-width: 699px){
+    .totalRatings{
+      font-size: 0.8rem;
+      width: 90px;
+      top: auto;
+      bottom: -1rem;
+      left: -0rem;
+    }
+    .gameRating:hover .totalRatings{
+      opacity: 1;
+      top:auto;
+      bottom: -2rem;
+    }
 }
 
 /* stars */
@@ -405,6 +449,13 @@ label{
   font-weight: bold;
   padding: 0.2rem 0.8rem;
   background-color: rgb(213, 213, 213);
+}
+/* @media for paginate */
+@media screen and (max-width: 699px){
+   .paginate-container{
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+   }
 }
 
 /* search bar */
@@ -489,6 +540,19 @@ label{
   cursor: pointer;
 }
 
+/* @media for footer */
+@media screen and (max-width: 700px) {
+    .footer-section{
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+    .footer-menu{
+      justify-content: center;
+    }
+}
 /* about section */
 .about-section h2, .privacy-section h2{
   text-align: center;
