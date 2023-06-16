@@ -106,10 +106,13 @@ code {
 }
 @media screen and (max-width: 700px) {
   .user-container{
-    
     right: -0.9rem;
-  
   }
+  .user-email, .user-email-hello{
+     font-size: 0.9rem;
+  }
+
+
 }
 .user-email{
   border-bottom: 1px solid;
@@ -266,7 +269,7 @@ label{
   height: 300px;
   object-fit: cover;
 
-  transition: opacity 0.5s ease-in-out;
+  transition: all 0.8s ease-in-out;
 }
 .img-container:hover .gameInfo{
   opacity: 1;
@@ -299,7 +302,7 @@ label{
   text-align:justify;
   
 
-  transition: all ease-in-out 0.9s;
+  transition: all ease-in-out 0.8s;
 }
 
 /* media game info */
@@ -579,3 +582,38 @@ label{
   color: white;
 }
 
+/* @media for About section */
+@media screen and (max-width: 870px) {
+  .about-content{
+    flex-direction: column;
+  }
+  .about-content p{
+    width: 70%;
+    font-size: 1rem;
+  }
+  .about-content img{
+    width: 50%;
+    max-width: 350px;
+    min-width: 250px;
+    
+   }
+   .about-section h2, .privacy-section h2{
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
+   }
+}
+
+
+/* privacy section */
+
+.privacy-content{
+  width: 100ch;
+  text-align: justify;
+  margin: 2.5rem auto;
+}
+
+@media screen and (max-width: 950px) {
+  .privacy-content{
+    width: 80%;
+  }
+}
