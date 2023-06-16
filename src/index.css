@@ -75,7 +75,7 @@ code {
 /* media for bannderImg */
 @media screen and (max-width: 700px) {
   .bannerImg{
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
   .bannerImg{
     margin-top: 1rem ;
@@ -313,7 +313,7 @@ label{
 }
 @media screen and (max-width: 884px) {
   .gameInfo{
-    font-size: calc(0.9rem + 0.3vw);
+    font-size: calc(0.75rem + 0.3vw);
   }
 }
 
