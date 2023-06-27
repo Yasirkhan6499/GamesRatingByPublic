@@ -815,7 +815,20 @@ position: relative;
     margin-top: -4rem;
 }
 }
+@media screen and (max-width: 530px){
+ 
+  .comments-show-cont > *{
 
+    margin-top: 0.6rem;
+    padding-bottom: 1rem;
+    margin-bottom: -0.5rem;
+    font-size: 0.7rem;
+  }
+  .comments-show-btn{
+    font-size: 0.8rem;
+    margin-top: 0.36rem;
+  }
+}
 /*------- Make the scrollbar transparent *-------------------*/
 
 .comments::-webkit-scrollbar {

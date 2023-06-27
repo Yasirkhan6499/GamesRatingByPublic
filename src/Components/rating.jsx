@@ -60,7 +60,7 @@ console.log(`${rating}/10`);
       return(
       (screen1200Comments)?
       (screen1200Comments==="block")?{marginTop: "-19rem"}:{marginTop:"0rem"}
-      :(screen860Comments==="block")?{bottom: "59%"}:{bottom: "27.5%"}
+      :(screen860Comments==="block")?{bottom: "54%"}:{bottom: "27.5%"}
       )
     }
     else return {marginTop: "initial"};
