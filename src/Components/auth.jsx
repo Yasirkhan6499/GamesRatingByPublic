@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
 import Error from "./error"
 import { getErrorMsg } from '../config/errorHandling';
+import { getRandomDarkColor } from '../utils/colorGenerator';
 
 const Auth = () => {
     const [email,setEmail] = useState("");
@@ -73,7 +74,8 @@ const Auth = () => {
         const userDocRef = doc(db, 'users', auth.currentUser.uid); // Replace 'your-custom-id' with the desired document ID
         await setDoc(userDocRef, {
             userId,
-            gamesRatedArr
+            gamesRatedArr,
+            color: getRandomDarkColor()
         });
 
         

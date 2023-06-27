@@ -1,64 +1,63 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { auth } from '../config/firebase';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { GameContext } from '../contexts/gameContext';
+// import { getUserNameFromEmail } from '../utils/helpers';
 
 const CurrentUser = () => {
   const { currentUser } = auth;
-  const [user, setUser] = useState(currentUser?.email);
-  const [display, setDisplay] = useState();
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [display, setDisplay] = useState('none');
   const navigate = useNavigate();
   const location = useLocation();
   const currentPath = location.pathname;
-  // useContext hook
-  const {isRefresh, triggerRefresh} = useContext(GameContext);
 
   useEffect(() => {
-    const checkAndGetUser = () => {
-      onAuthStateChanged(auth, (user) => {
-       const userName = (user)?capitalizeFirstLetter(
-        user.email.split("@")[0]
-        ):null;
-        user ? setUser(userName) : setUser("Sign In");
-      });
-    };
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const userName = getUserNameFromEmail(user.email);
+        setUser(userName);
+      } else {
+        setUser(null);
+      }
+      setLoading(false);
+    });
 
-    checkAndGetUser();
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
-  // capitalize first letter in the name
-
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
-
-  // handling show logout button
   const handleShowLogout = () => {
-   display==="block"?setDisplay("none"):setDisplay("block");
+    setDisplay((prevDisplay) => (prevDisplay === 'block' ? 'none' : 'block'));
   };
 
-//   handling logging out
-const handleLogout = ()=>{
-    signOut(auth);
-    setDisplay("none");
-    // triggerRefresh(true); //context (Global variable) to refresh the whole app
-    window.location.reload();
-}
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      setDisplay('none');
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-// handling Sigining In
-const handleSignIn = ()=>{
-    navigate("/auth",{replace:true});
-}
+  const handleSignIn = () => {
+    navigate('/auth', { replace: true });
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <div className='user-container'>
-      {console.log(currentUser?.email)}
-      <span className='user-email-hello'>{currentUser?"Hello,":""}</span> 
-      <p onClick={currentUser?handleShowLogout:handleSignIn} className='user-email'>
-       {currentPath !== '/auth' ? user : null}
+    <div className="user-container">
+      <span className="user-email-hello">{currentUser ? 'Hello,' : ''}</span>
+      <p onClick={currentUser ? handleShowLogout : handleSignIn} className="user-email">
+        {currentPath !== '/auth' ? user || 'Sign In' : null}
       </p>
-      <p style={{ display }} onClick={handleLogout} className='user-logout'>
+      <p style={{ display }} onClick={handleLogout} className="user-logout">
         Sign Out
       </p>
     </div>
@@ -66,3 +65,15 @@ const handleSignIn = ()=>{
 };
 
 export default CurrentUser;
+
+
+
+ // Extract the username from email
+
+ export function getUserNameFromEmail(string) {
+  if(string){
+  const user = string.split('@')[0];
+  return user.charAt(0).toUpperCase() + user.slice(1);
+  }
+}
+

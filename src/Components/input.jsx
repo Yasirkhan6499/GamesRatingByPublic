@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useState } from 'react';
 
-const Input = ({id,label,type,inputEmpty,onSettingValue,placeholder,classes}) => {
+    const Input = ({id,label,type,inputEmpty,onSettingValue,placeholder,classes,onKeyDown}) => {
     const [input,setInput] = useState("");
 
     useEffect(()=>{
@@ -27,6 +27,7 @@ const Input = ({id,label,type,inputEmpty,onSettingValue,placeholder,classes}) =>
         onChange={handleChange} 
         onBlur={(typeof onSettingValue === "function")?(e)=>onSettingValue(e.currentTarget.value):null}
         placeholder={(placeholder)?placeholder:null}
+        onKeyDown={onKeyDown}
         />
         </div>
     );

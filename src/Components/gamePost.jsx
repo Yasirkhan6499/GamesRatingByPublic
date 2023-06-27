@@ -11,18 +11,23 @@ import { GameContext } from '../contexts/gameContext';
 import Input from './input';
 import Select from './select';
 import { filterOptions, getFilteredData } from '../utils/filterOptions';
-
+import CommentsTab from './commentsTab';
+import getScreenSize, { addResizeListener } from '../utils/screenSizeCheck';
+import CommentsShowBtn from './commentsShowBtn';
 
 const GamePost = () => {
     const {currentPage,addCurrentPage,totalPages,addTotalPages} = useContext(GameContext)
     const gamesCollectionRef = collection(db,"games")
     const usersCollectionRef = collection(db, "users");
+    const [updatedRatings, setUpdatedRatings] = useState();
+    const [screenSize, setScreenSize] = useState();
 
     const [gameList, setGameList] = useState([]);
     const [allGameList, setAllGameList] = useState([]);
     const [searchedVal, setSearchedVal] = useState("");
     const [filteredList, setFilteredList] = useState();
     const [currentFilter, setCurrentFilter] = useState("");
+    const [showComments, setshowComments] = useState("none");
     const navigate = useNavigate();
 
     // store ratings for a post
@@ -58,6 +63,8 @@ const GamePost = () => {
     
         const docRef = doc(db,"games",gameDoc[0].id);
         updateDoc(docRef, {Ratings: roundedRating, totalRatings, sumOfRatings});
+
+         
 
         //add the game id to the users doc in the database
         addGameIdInDB(gameDoc[0].id, newRating);
@@ -136,6 +143,7 @@ const GamePost = () => {
       const handleFilterData = (filter)=>{
         myGlobalObject.checkedStarNumber = 0; //its important because when we set rating for a post, other posts stars gets highlighted as well.
         setCurrentFilter(filter);
+
         //  set current page to 1
        addCurrentPage(1); 
        setFilteredList(getFilteredData(allGameList, filter));
@@ -143,14 +151,33 @@ const GamePost = () => {
        console.log(filteredList);
     }
     
-    useEffect(()=>{
-        getGamesList(searchedVal);
-    },[currentPage, filteredList]);
+   const handleUpdatedRatings = (value)=>{
+        setUpdatedRatings(value);
+    }
 
-  
+    useEffect(()=>{
+
+        function handleScreenResize() {
+            setScreenSize(getScreenSize());
+          }
+      
+          addResizeListener(handleScreenResize);
+          
+          setScreenSize(getScreenSize());
+          
+          
+        getGamesList(searchedVal);                                                                                                                                                                                                                                
+    },[currentPage, filteredList, updatedRatings, screenSize, showComments]);
+
+        // handling displaying comments when comment btn is clicked
+        const handleDisplayComments = (value)=>{
+            console.log(value);
+            setshowComments(value);
+        }
 
     return ( 
         <div className='gamePosts-container'>
+            {/* {console.log(screenSize)} */}
             {/* current user */}
              {/* {alert("refreshed")} */}
              {/* search bar */}
@@ -161,6 +188,7 @@ const GamePost = () => {
                  onSettingValue={getGamesList}
                  placeholder="Search By Name"
                  classes="search-bar"
+                
                  />
                  
                              {/* Filter Data 1 */}
@@ -174,7 +202,7 @@ const GamePost = () => {
                              />
              </div>
 
-            {gameList?.map(game=>{
+            {gameList?.map((game,index)=>{
                
                 return (
                 <div className='gamePostPlusRating'>
@@ -185,13 +213,50 @@ const GamePost = () => {
                     <div className='gamePost-info'>
                     <p>{game.title}</p>
                     <p>{game.releaseDate}</p>
-                    <Stars onNewRating = {handleNewRating} gameId = {game.id}  gameDocId = {game.docId} />
+                    <Stars onNewRating = {handleNewRating}
+                    key={game.id}
+                     gameId = {game.id}  
+                     gameDocId = {game.docId} />
                     {/* {console.log(game.docId)} */}
+                   {/* show or hide comments when comment btn is clicked */}
+                    <CommentsShowBtn 
+                    showComments={showComments}
+                    onClick={handleDisplayComments}
+                    />
                 </div>
                     
                 </div>
+               
+
+                    {/* add comments section for Small screens*/}
+                {screenSize<=1200? <CommentsTab
+                key={game.id}
+                gameId={game.docId}
+                totalRatings={game.totalRatings}
+                updatedRatings={updatedRatings}
+                showComments={showComments}
+                />: null}
+               
                 </div>
-                <RatingSystem ratings = {game.Ratings} totalRatings = {game.totalRatings}/>
+                {/* add comments section for PC */}
+                {screenSize>1200? <CommentsTab
+                key={game.id}
+                gameId={game.docId}
+                totalRatings={game.totalRatings}
+                updatedRatings={updatedRatings}
+                
+                />:null}
+               
+                {/* Ratings */}
+                <RatingSystem
+                
+                ratings={game.Ratings}
+                totalRatings={game.totalRatings}
+                onUpdateRatings={handleUpdatedRatings}
+                showComments={(screenSize<=1200?showComments:null)}
+                screenSize={(screenSize<=1200?screenSize:null)}
+                />
+
                 </div>
                 )
             })}

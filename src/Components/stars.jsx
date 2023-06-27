@@ -13,7 +13,7 @@ const Stars = ({ onNewRating, gameId, gameDocId }) => {
       if (auth.currentUser) {
         const userDoc = doc(db, "users", auth.currentUser?.uid);
         const userDocSnap = await getDoc(userDoc);
-        const gameRated = userDocSnap.data().gamesRatedArr.find(game => game.gameId === gameDocId);
+        const gameRated = userDocSnap.data()?.gamesRatedArr.find(game => game.gameId === gameDocId);
         if (gameRated) {
           setIsGameRated(true);
           setStarNumber(gameRated.rating);
@@ -42,6 +42,7 @@ const Stars = ({ onNewRating, gameId, gameDocId }) => {
           starNumber={i}
           onClick={onNewRating}
           gameId={gameId}
+          key={i}
         />
       );
     }
