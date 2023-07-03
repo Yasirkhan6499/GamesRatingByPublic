@@ -4,13 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 
-const CommentsShowBtn = ({ showComments, onClick}) => {
+const CommentsShowBtn = ({ showComments, onClick, gameId}) => {
     
 
-    const handleShowComments = ()=>{
-       
-        (showComments==="block")?onClick("none")
-        :onClick("block");
+    const handleShowComments = ()=>{ 
+       console.log(gameId);
+        (showComments?.showValue==="none")?onClick(showComments?.gameId,"block")
+        :onClick(showComments?.gameId,"none");
     }
 
 

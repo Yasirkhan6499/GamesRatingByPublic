@@ -26,7 +26,7 @@ function RatingSystem({ratings, totalRatings, onUpdateRatings, showComments, scr
     else setScreen1200Comments(null);
     
     if(screenSize<=860){
-      console.log(showComments);
+      // console.log(showComments);
       (showComments==="block")?setScreen860Comments("block"):setScreen860Comments("none");
     }
     else setScreen860Comments(null);

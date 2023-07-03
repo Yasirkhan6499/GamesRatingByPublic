@@ -29,22 +29,23 @@ const CommentsTab = ({gameId, totalRatings,showComments}) => {
     const commentsContainerRef = useRef(null);
    
     // Create a ref for the input element
-    const commentInputRef = useRef(null);
+    // const commentInputRef = useRef(null);
 
 
     useEffect(() => {
       
+      console.log(showComments);
         getCommentsFromDB();
 
-        if (showComments === 'block') {
-        // Focus the input element when showComments is 'block'
+        // if (showComments === 'block') {
+        // // Focus the input element when showComments is 'block'
 
-        console.log(commentInputRef.current);
-        commentInputRef.current?.focus();
+        // console.log(commentInputRef.current);
+        // commentInputRef.current?.focus();
     
-        }
+        // }
         
-      }, [gameId, totalRatings, showComments]);
+      }, [gameId, totalRatings]);
 
       // useeffect for scrolling to bottom after commenting
       useEffect(()=>{
@@ -118,14 +119,13 @@ const CommentsTab = ({gameId, totalRatings,showComments}) => {
       }
 
       return (
-        <div style={{display:showComments}} className='comments-section-cont'> 
+        <div style={{display:showComments?.showValue}} className='comments-section-cont'> 
           <div ref={commentsContainerRef} className={commentsArr.length > 0 ? "comments" : "no-comments-cont"}>
             {(commentsArr.length>0)?commentsArr.map((comment, index) => (
               <div className='profile-comment-cont' key={index}>
                 <div className="profile-cont">
                   <ProfileIcon userName={comment.userName} 
                   userId={comment.userId}
-                  
                   />
                   <p className="profileName">{comment.userName}</p>
                   <USerStars
@@ -151,7 +151,7 @@ const CommentsTab = ({gameId, totalRatings,showComments}) => {
               />
             </span>
             <Input
-              ref={commentInputRef} // Attach the ref to the input element
+              // ref={commentInputRef} // Attach the ref to the input element
               id="comment-tab"
               type="text"
               inputEmpty={commentsArr}

@@ -27,7 +27,7 @@ const GamePost = () => {
     const [searchedVal, setSearchedVal] = useState("");
     const [filteredList, setFilteredList] = useState();
     const [currentFilter, setCurrentFilter] = useState("");
-    const [showComments, setshowComments] = useState("none");
+    const [showComments, setshowComments] = useState([{}]);
     const navigate = useNavigate();
 
     // store ratings for a post
@@ -167,12 +167,53 @@ const GamePost = () => {
           
           
         getGamesList(searchedVal);                                                                                                                                                                                                                                
-    },[currentPage, filteredList, updatedRatings, screenSize, showComments]);
+    },[currentPage, filteredList, updatedRatings, screenSize]);
+
+
+
+    // this useEffect is only to populate ShowComments based on the currentPage changing
+    useEffect(()=>{
+         //   set the values in the showComments Array of objects for the first time
+        
+         populateShowComments();
+    },[currentPage, gameList]);
+
+
+    const populateShowComments = () => {
+        setshowComments((prevState) => {
+          const showCommentsHolder = gameList.map((game) => {
+            const existingComment = prevState.find((obj) => obj.gameId === game.id);
+            return {
+              gameId: game.id,
+              showValue: existingComment ? existingComment.showValue : "none",
+            };
+          });
+          return showCommentsHolder;
+        });
+         // let showCommentsHolder=[{}];
+        // gameList.forEach(game=>{
+        //     showCommentsHolder.push({gameId: game.id, showValue:"none"});
+        // })
+        // setshowComments(showCommentsHolder);
+        // console.log(gameList);
+      };
+       
+    
 
         // handling displaying comments when comment btn is clicked
-        const handleDisplayComments = (value)=>{
-            console.log(value);
-            setshowComments(value);
+        const handleDisplayComments = (gameId,showValue)=>{
+            console.log(gameId,showValue);
+            setshowComments((prevstate)=>{
+               const newState = [...prevstate];
+               const newStateObj = newState.find(showComment=>showComment.gameId===gameId);
+
+               if(newStateObj)
+               newStateObj.showValue=showValue;
+               else
+                newState.push({gameId,showValue});
+
+                return newState;
+            });
         }
 
     return ( 
@@ -220,8 +261,9 @@ const GamePost = () => {
                     {/* {console.log(game.docId)} */}
                    {/* show or hide comments when comment btn is clicked */}
                     <CommentsShowBtn 
-                    showComments={showComments}
+                    showComments={showComments.find(showComment=>showComment.gameId===game.id)}
                     onClick={handleDisplayComments}
+                    gameId={game.id}
                     />
                 </div>
                     
@@ -234,7 +276,7 @@ const GamePost = () => {
                 gameId={game.docId}
                 totalRatings={game.totalRatings}
                 updatedRatings={updatedRatings}
-                showComments={showComments}
+                showComments={showComments.find(showComment=>showComment.gameId===game.id)}
                 />: null}
                
                 </div>
