@@ -155,6 +155,10 @@ const GamePost = () => {
         setUpdatedRatings(value);
     }
 
+    const getShowComment = (gameId)=>{
+       return showComments.find(showComment=>showComment.gameId===gameId)
+    }
+
     useEffect(()=>{
 
         function handleScreenResize() {
@@ -261,7 +265,7 @@ const GamePost = () => {
                     {/* {console.log(game.docId)} */}
                    {/* show or hide comments when comment btn is clicked */}
                     <CommentsShowBtn 
-                    showComments={showComments.find(showComment=>showComment.gameId===game.id)}
+                    showComments={getShowComment(game.id)}
                     onClick={handleDisplayComments}
                     gameId={game.id}
                     />
@@ -276,7 +280,7 @@ const GamePost = () => {
                 gameId={game.docId}
                 totalRatings={game.totalRatings}
                 updatedRatings={updatedRatings}
-                showComments={showComments.find(showComment=>showComment.gameId===game.id)}
+                showComments={getShowComment(game.id)}
                 />: null}
                
                 </div>
@@ -295,7 +299,7 @@ const GamePost = () => {
                 ratings={game.Ratings}
                 totalRatings={game.totalRatings}
                 onUpdateRatings={handleUpdatedRatings}
-                showComments={(screenSize<=1200?showComments:null)}
+                showComments={(screenSize<=1200?getShowComment(game.id):null)}
                 screenSize={(screenSize<=1200?screenSize:null)}
                 />
 

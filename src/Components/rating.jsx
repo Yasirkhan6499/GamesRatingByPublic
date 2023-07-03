@@ -14,20 +14,20 @@ function RatingSystem({ratings, totalRatings, onUpdateRatings, showComments, scr
     // adjust the position of gamesRating on smaller screens
     adjustGamesRatingPos();
 
-  },[ratings, totalRatings, screenSize, showComments]);
+  },[ratings, totalRatings, screenSize, showComments?.showValue]);
 
   // adjust gameRating Position
   const adjustGamesRatingPos = ()=>{
     if(screenSize){
     if(screenSize<=1200 && screenSize>860){
       console.log(showComments);
-      (showComments==="block")?setScreen1200Comments("block"):setScreen1200Comments("none");
+      (showComments?.showValue==="block")?setScreen1200Comments("block"):setScreen1200Comments("none");
     }
     else setScreen1200Comments(null);
     
     if(screenSize<=860){
       // console.log(showComments);
-      (showComments==="block")?setScreen860Comments("block"):setScreen860Comments("none");
+      (showComments?.showValue==="block")?setScreen860Comments("block"):setScreen860Comments("none");
     }
     else setScreen860Comments(null);
   }
