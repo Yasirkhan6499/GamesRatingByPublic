@@ -884,6 +884,7 @@ position: relative;
 
   display: flex;
   margin: 0.4rem 0.6rem;
+  
 }
 .profile-icon{
   width: 30px;
@@ -898,10 +899,11 @@ position: relative;
   display: inline-block;
   vertical-align: middle;
  
+ 
 }
 .profile-icon-translateY{
   display: inline-block;
-  transform: translateY(-0.1rem);
+  transform: translateY(-0.2rem);
 }
 .profileName{
   font-weight: bold;
@@ -913,6 +915,7 @@ position: relative;
   bottom: -0rem;
   left: 1.48rem;
   display: flex;
+
   
 }
 
@@ -939,6 +942,16 @@ position: relative;
     font-size: 0.75rem;
    
   }
+  .profile-icon{
+    width: 20px;
+    height: 20px;
+    font-size: 0.7rem;
+    transform: translateY(0.3rem);
+  }
+  .comment-input-profile-icon{
+    bottom: 0.9rem;
+  }
+ 
   .profileName{
     font-size: 0.9rem;
   }
