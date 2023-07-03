@@ -815,6 +815,11 @@ position: relative;
     margin-top: -4rem;
 }
 }
+@media screen and (max-width: 600px){
+  .comment-single{
+    font-size: 0.8rem;
+  }
+}
 @media screen and (max-width: 530px){
  
   .comments-show-cont > *{
@@ -829,6 +834,8 @@ position: relative;
     margin-top: 0.4rem;
     margin-left: 0.1rem
   }
+ 
+  
 }
 /*------- Make the scrollbar transparent *-------------------*/
 
@@ -906,4 +913,23 @@ position: relative;
 .user-stars-for-comment > *{
   font-size: 1rem;
   margin-top: 0.4rem;
+}
+
+
+@media screen and (max-width: 600px) {
+  .profile-cont{
+
+    flex-wrap: wrap;
+  }
+  .commentTime{
+   
+    font-size: 0.75rem;
+   
+  }
+  .profileName{
+    font-size: 0.9rem;
+  }
+  .user-stars-for-comment > *{
+    font-size: 0.85rem;
+  }
 }
