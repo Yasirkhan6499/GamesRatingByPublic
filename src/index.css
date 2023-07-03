@@ -696,6 +696,7 @@ label{
   color: rgb(190, 190, 190);
   pointer-events: auto;
   cursor: pointer;
+
 }
 .comment-btn:hover{
   
@@ -831,6 +832,11 @@ position: relative;
   }
   .comment-input{
     font-size: 0.8rem;
+  }
+  .comment-icon > *{
+    width: 12px;
+    height: 12px;
+    margin-bottom: 0.2rem;
   }
 }
 @media screen and (max-width: 530px){
