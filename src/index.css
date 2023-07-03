@@ -776,6 +776,12 @@ position: relative;
 
 /* media size for comments */
 @media screen and (max-width: 1200px){
+  .no-comments{
+    position: relative;
+     left: initial;
+     top: initial;
+     
+   }
   .comments-section-cont{
     border: 3px solid rgb(34, 34, 34);
     border-radius: 2px;
