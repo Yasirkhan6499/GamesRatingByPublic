@@ -954,6 +954,12 @@ position: relative;
     font-size: 0.7rem;
     transform: translateY(0.3rem);
   }
+  .profile-icon-translateY{
+    transform: translateY(-0.1rem);
+  }
+  .profile-icon-letter{
+    vertical-align: sub;
+  }
   .comment-input-profile-icon{
     bottom: 0.9rem;
   }
