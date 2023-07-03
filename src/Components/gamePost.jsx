@@ -204,7 +204,7 @@ const GamePost = () => {
         const handleDisplayComments = (gameId,showValue)=>{
             console.log(gameId,showValue);
             setshowComments((prevstate)=>{
-                const newState = [...prevstate];
+               const newState = [...prevstate];
                const newStateObj = newState.find(showComment=>showComment.gameId===gameId);
 
                if(newStateObj)
