@@ -823,6 +823,13 @@ position: relative;
 }
 @media screen and (max-width: 600px){
   .comment-single{
+    font-size: 0.8re;
+  }
+  .comment-input::placeholder{
+    font-size: 0.8rem;
+    
+  }
+  .comment-input{
     font-size: 0.8rem;
   }
 }
